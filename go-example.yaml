@@ -1,0 +1,29 @@
+namespace: go-example
+go-example:
+  defines: runnable
+  metadata:
+    name: go-example
+    description: A basic HTTP service written in Go.
+    icon: https://emojiapi.dev/api/v1/robot.svg
+  containers:
+    go-example:
+      build: .
+  services:
+    http:
+      container: go-example
+      port: 8080
+      host-port: 8080
+      publish: false
+      protocol: TCP
+      description: The port exposed for web server communication.
+  variables:
+    admin-username:
+      env: ADMIN_USERNAME
+      type: string
+      description: The admin username for this service.
+      value: admin
+    admin-password:
+      env: ADMIN_PASSWORD
+      type: string
+      description: The admin password for this service.
+      value: '!!!SETME-USE-SECRETS!!!'
